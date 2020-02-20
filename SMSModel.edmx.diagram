@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd7164f3063f43a48a47867e34ecd550" Name="Diagram1" ZoomLevel="21">
+        <EntityTypeShape EntityType="SCMSModel.Address" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.Branch" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.Employee" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.Location" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.Lookup" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.School" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.SchoolYear" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.Student" Width="1.5" PointX="10.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCMSModel.User" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="SCMSModel.FK_AddressCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_AddressUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Branch_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Branch_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Branch_School" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_BranchCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_BranchUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Employee_School" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Employee_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_EmployeeCreatedBy_user" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_EmployeeUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_LocationCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_LocationUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_LookupCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_LookupUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_SchoolCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_SchoolUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_SchoolYearSchool_SchoolYear" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Student_School" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_SchoolYearCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_SchoolYearUpdatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Student_SchoolYear" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_Student_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_StudentCreatedBy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SCMSModel.FK_StudentUpdatedBy_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

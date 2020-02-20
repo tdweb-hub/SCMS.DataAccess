@@ -1,0 +1,2101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SCMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reference" Type="int" Nullable="false" />
+          <Property Name="NameSpace" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SchoolId" Type="int" Nullable="false" />
+          <Property Name="BranchLocation" Type="int" />
+          <Property Name="BranchAddress" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchoolID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserRole" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reference" Type="int" Nullable="false" />
+          <Property Name="NameSpace" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Woreda" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="Longtitude" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LookupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LookupDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SchoolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Tax" Type="int" />
+          <Property Name="Website" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PublicId" Type="nvarchar" MaxLength="100" />
+          <Property Name="VerificationStatus" Type="bit" Nullable="false" />
+          <Property Name="SubscriptionStatus" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="SchoolYearID" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SchoolYearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchoolID" Type="int" Nullable="false" />
+          <Property Name="SchoolYear" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchoolID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SchoolYear" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="date" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="int" />
+          <Property Name="Location" Type="int" />
+          <Property Name="FailedLoginCount" Type="int" />
+          <Property Name="IsEnabled" Type="bit" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="EmailVerified" Type="bit" />
+          <Property Name="PwdChangeRequired" Type="bit" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="LockedTime" Type="datetime" />
+          <Property Name="PasswordChangeDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AddressCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="BranchAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="BranchLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeCreatedBy_user">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UpdateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearSchool_SchoolYear">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_SchoolYear">
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SchoolYearID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SchoolYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAddressDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAddressInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="reference" Type="int" Mode="In" />
+          <Parameter Name="NameSpace" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressType" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spAddressSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spAddressSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAddressUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="reference" Type="int" Mode="In" />
+          <Parameter Name="NameSpace" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressType" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spBranchDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spBranchInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="BranchName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SchoolId" Type="int" Mode="In" />
+          <Parameter Name="BranchLocation" Type="int" Mode="In" />
+          <Parameter Name="BranchAddress" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spBranchSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spBranchSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spBranchUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="BranchName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SchoolId" Type="int" Mode="In" />
+          <Parameter Name="BranchLocation" Type="int" Mode="In" />
+          <Parameter Name="BranchAddress" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spEmployeeDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEmployeeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserRole" Type="int" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdateBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spEmployeeSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spEmployeeSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEmployeeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserRole" Type="int" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdateBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spLocationDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spLocationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="Reference" Type="int" Mode="In" />
+          <Parameter Name="NameSpace" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Woreda" Type="nvarchar" Mode="In" />
+          <Parameter Name="Area" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="decimal" Mode="In" />
+          <Parameter Name="Longtitude" Type="decimal" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spLocationSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spLocationSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spLocationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="Reference" Type="int" Mode="In" />
+          <Parameter Name="NameSpace" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Woreda" Type="nvarchar" Mode="In" />
+          <Parameter Name="Area" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="decimal" Mode="In" />
+          <Parameter Name="Longtitude" Type="decimal" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spLookupDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spLookupInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="LookupType" Type="nvarchar" Mode="In" />
+          <Parameter Name="LookupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LookupDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsDefault" Type="bit" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spLookupSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spLookupSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spLookupUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="LookupType" Type="nvarchar" Mode="In" />
+          <Parameter Name="LookupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LookupDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsDefault" Type="bit" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSchoolDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSchoolInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="DisplayName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Tax" Type="int" Mode="In" />
+          <Parameter Name="Website" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PublicId" Type="nvarchar" Mode="In" />
+          <Parameter Name="VerificationStatus" Type="bit" Mode="In" />
+          <Parameter Name="SubscriptionStatus" Type="bit" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSchoolSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spSchoolSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSchoolUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="DisplayName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Tax" Type="int" Mode="In" />
+          <Parameter Name="Website" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PublicId" Type="nvarchar" Mode="In" />
+          <Parameter Name="VerificationStatus" Type="bit" Mode="In" />
+          <Parameter Name="SubscriptionStatus" Type="bit" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSchoolYearDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSchoolYearInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="SchoolYear" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSchoolYearSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spSchoolYearSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSchoolYearUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="SchoolYear" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spStudentDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spStudentInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="SchoolYear" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spStudentSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spStudentSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spStudentUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="SchoolID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="SchoolYear" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spUserDeleteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="int" Mode="In" />
+          <Parameter Name="Location" Type="int" Mode="In" />
+          <Parameter Name="FailedLoginCount" Type="int" Mode="In" />
+          <Parameter Name="IsEnabled" Type="bit" Mode="In" />
+          <Parameter Name="IsLocked" Type="bit" Mode="In" />
+          <Parameter Name="EmailVerified" Type="bit" Mode="In" />
+          <Parameter Name="PwdChangeRequired" Type="bit" Mode="In" />
+          <Parameter Name="LastLoginTime" Type="datetime" Mode="In" />
+          <Parameter Name="LockedTime" Type="datetime" Mode="In" />
+          <Parameter Name="PasswordChangeDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spUserSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms" />
+        <Function Name="spUserSelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="scms">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="int" Mode="In" />
+          <Parameter Name="Location" Type="int" Mode="In" />
+          <Parameter Name="FailedLoginCount" Type="int" Mode="In" />
+          <Parameter Name="IsEnabled" Type="bit" Mode="In" />
+          <Parameter Name="IsLocked" Type="bit" Mode="In" />
+          <Parameter Name="EmailVerified" Type="bit" Mode="In" />
+          <Parameter Name="PwdChangeRequired" Type="bit" Mode="In" />
+          <Parameter Name="LastLoginTime" Type="datetime" Mode="In" />
+          <Parameter Name="LockedTime" Type="datetime" Mode="In" />
+          <Parameter Name="PasswordChangeDate" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SCMSModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="SchoolYear" EntityType="Self.SchoolYear" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="scms" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="scms" store:Type="Tables" />
+          <AssociationSet Name="FK_AddressCreatedBy_User" Association="Self.FK_AddressCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressUpdatedBy_User" Association="Self.FK_AddressUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Address" Association="Self.FK_Branch_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Location" Association="Self.FK_Branch_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_School" Association="Self.FK_Branch_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchCreatedBy_User" Association="Self.FK_BranchCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchUpdatedBy_User" Association="Self.FK_BranchUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_School" Association="Self.FK_Employee_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeCreatedBy_user" Association="Self.FK_EmployeeCreatedBy_user">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeUpdatedBy_User" Association="Self.FK_EmployeeUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationCreatedBy_User" Association="Self.FK_LocationCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationUpdatedBy_User" Association="Self.FK_LocationUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupCreatedBy_User" Association="Self.FK_LookupCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Lookup" EntitySet="Lookup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupUpdatedBy_User" Association="Self.FK_LookupUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Lookup" EntitySet="Lookup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolCreatedBy_User" Association="Self.FK_SchoolCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="School" EntitySet="School" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolUpdatedBy_User" Association="Self.FK_SchoolUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="School" EntitySet="School" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearCreatedBy_User" Association="Self.FK_SchoolYearCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearSchool_SchoolYear" Association="Self.FK_SchoolYearSchool_SchoolYear">
+            <End Role="School" EntitySet="School" />
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearUpdatedBy_User" Association="Self.FK_SchoolYearUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_School" Association="Self.FK_Student_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_SchoolYear" Association="Self.FK_Student_SchoolYear">
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_User" Association="Self.FK_Student_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCreatedBy_User" Association="Self.FK_StudentCreatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentUpdatedBy_User" Association="Self.FK_StudentUpdatedBy_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reference" Type="Int32" Nullable="false" />
+          <Property Name="NameSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_AddressCreatedBy_User" FromRole="Address" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_AddressUpdatedBy_User" FromRole="Address" ToRole="User" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Address" FromRole="Address" ToRole="Branch" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SchoolId" Type="Int32" Nullable="false" />
+          <Property Name="BranchLocation" Type="Int32" />
+          <Property Name="BranchAddress" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Branch_Address" FromRole="Branch" ToRole="Address" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Branch_Location" FromRole="Branch" ToRole="Location" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Branch_School" FromRole="Branch" ToRole="School" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BranchCreatedBy_User" FromRole="Branch" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_BranchUpdatedBy_User" FromRole="Branch" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserRole" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Employee_School" FromRole="Employee" ToRole="School" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employee_User" FromRole="Employee" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_EmployeeCreatedBy_user" FromRole="Employee" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_EmployeeUpdatedBy_User" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reference" Type="Int32" Nullable="false" />
+          <Property Name="NameSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Woreda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Longtitude" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Location" FromRole="Location" ToRole="Branch" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LocationCreatedBy_User" FromRole="Location" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_LocationUpdatedBy_User" FromRole="Location" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LookupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LookupDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LookupCreatedBy_User" FromRole="Lookup" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_LookupUpdatedBy_User" FromRole="Lookup" ToRole="User" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="SchoolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Int32" />
+          <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PublicId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VerificationStatus" Type="Boolean" Nullable="false" />
+          <Property Name="SubscriptionStatus" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_School" FromRole="School" ToRole="Branch" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_School" FromRole="School" ToRole="Employee" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SchoolCreatedBy_User" FromRole="School" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_SchoolUpdatedBy_User" FromRole="School" ToRole="User" />
+          <NavigationProperty Name="SchoolYears" Relationship="Self.FK_SchoolYearSchool_SchoolYear" FromRole="School" ToRole="SchoolYear" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_School" FromRole="School" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="SchoolYearID" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="SchoolYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolID" Type="Int32" Nullable="false" />
+          <Property Name="SchoolYear1" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="School" Relationship="Self.FK_SchoolYearSchool_SchoolYear" FromRole="SchoolYear" ToRole="School" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SchoolYearCreatedBy_User" FromRole="SchoolYear" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_SchoolYearUpdatedBy_User" FromRole="SchoolYear" ToRole="User" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_SchoolYear" FromRole="SchoolYear" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="SchoolYear" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="School" Relationship="Self.FK_Student_School" FromRole="Student" ToRole="School" />
+          <NavigationProperty Name="SchoolYear1" Relationship="Self.FK_Student_SchoolYear" FromRole="Student" ToRole="SchoolYear" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Student_User" FromRole="Student" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_StudentCreatedBy_User" FromRole="Student" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_StudentUpdatedBy_User" FromRole="Student" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="Int32" />
+          <Property Name="Location" Type="Int32" />
+          <Property Name="FailedLoginCount" Type="Int32" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="EmailVerified" Type="Boolean" />
+          <Property Name="PwdChangeRequired" Type="Boolean" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LockedTime" Type="DateTime" Precision="3" />
+          <Property Name="PasswordChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_AddressCreatedBy_User" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Addresses1" Relationship="Self.FK_AddressUpdatedBy_User" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_BranchCreatedBy_User" FromRole="User" ToRole="Branch" />
+          <NavigationProperty Name="Branches1" Relationship="Self.FK_BranchUpdatedBy_User" FromRole="User" ToRole="Branch" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_User" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Employees1" Relationship="Self.FK_EmployeeCreatedBy_user" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Employees2" Relationship="Self.FK_EmployeeUpdatedBy_User" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_LocationCreatedBy_User" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Locations1" Relationship="Self.FK_LocationUpdatedBy_User" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Lookups" Relationship="Self.FK_LookupCreatedBy_User" FromRole="User" ToRole="Lookup" />
+          <NavigationProperty Name="Lookups1" Relationship="Self.FK_LookupUpdatedBy_User" FromRole="User" ToRole="Lookup" />
+          <NavigationProperty Name="Schools" Relationship="Self.FK_SchoolCreatedBy_User" FromRole="User" ToRole="School" />
+          <NavigationProperty Name="Schools1" Relationship="Self.FK_SchoolUpdatedBy_User" FromRole="User" ToRole="School" />
+          <NavigationProperty Name="SchoolYears" Relationship="Self.FK_SchoolYearCreatedBy_User" FromRole="User" ToRole="SchoolYear" />
+          <NavigationProperty Name="SchoolYears1" Relationship="Self.FK_SchoolYearUpdatedBy_User" FromRole="User" ToRole="SchoolYear" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_User" FromRole="User" ToRole="Student" />
+          <NavigationProperty Name="Students1" Relationship="Self.FK_StudentCreatedBy_User" FromRole="User" ToRole="Student" />
+          <NavigationProperty Name="Students2" Relationship="Self.FK_StudentUpdatedBy_User" FromRole="User" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_AddressCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="BranchAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="BranchLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeCreatedBy_user">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UpdateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearSchool_SchoolYear">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolYearUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SchoolYear">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_SchoolYear">
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SchoolYearID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SchoolYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCreatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentUpdatedBy_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SCMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="SchoolYears" EntityType="Self.SchoolYear" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_AddressCreatedBy_User" Association="Self.FK_AddressCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressUpdatedBy_User" Association="Self.FK_AddressUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Address" Association="Self.FK_Branch_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Location" Association="Self.FK_Branch_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_School" Association="Self.FK_Branch_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchCreatedBy_User" Association="Self.FK_BranchCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchUpdatedBy_User" Association="Self.FK_BranchUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_School" Association="Self.FK_Employee_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeCreatedBy_user" Association="Self.FK_EmployeeCreatedBy_user">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeUpdatedBy_User" Association="Self.FK_EmployeeUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationCreatedBy_User" Association="Self.FK_LocationCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationUpdatedBy_User" Association="Self.FK_LocationUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupCreatedBy_User" Association="Self.FK_LookupCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Lookup" EntitySet="Lookups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupUpdatedBy_User" Association="Self.FK_LookupUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Lookup" EntitySet="Lookups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolCreatedBy_User" Association="Self.FK_SchoolCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="School" EntitySet="Schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolUpdatedBy_User" Association="Self.FK_SchoolUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="School" EntitySet="Schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearSchool_SchoolYear" Association="Self.FK_SchoolYearSchool_SchoolYear">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_School" Association="Self.FK_Student_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearCreatedBy_User" Association="Self.FK_SchoolYearCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolYearUpdatedBy_User" Association="Self.FK_SchoolYearUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_SchoolYear" Association="Self.FK_Student_SchoolYear">
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_User" Association="Self.FK_Student_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCreatedBy_User" Association="Self.FK_StudentCreatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentUpdatedBy_User" Association="Self.FK_StudentUpdatedBy_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <FunctionImport Name="spAddressDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddressInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="reference" Mode="In" Type="Int32" />
+            <Parameter Name="NameSpace" Mode="In" Type="String" />
+            <Parameter Name="AddressType" Mode="In" Type="String" />
+            <Parameter Name="AddressValue" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddressSelectById" EntitySet="Addresses" ReturnType="Collection(SCMSModel.Address)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddressUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="reference" Mode="In" Type="Int32" />
+            <Parameter Name="NameSpace" Mode="In" Type="String" />
+            <Parameter Name="AddressType" Mode="In" Type="String" />
+            <Parameter Name="AddressValue" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBranchDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spBranchInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="BranchName" Mode="In" Type="String" />
+            <Parameter Name="SchoolId" Mode="In" Type="Int32" />
+            <Parameter Name="BranchLocation" Mode="In" Type="Int32" />
+            <Parameter Name="BranchAddress" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBranchSelectById" EntitySet="Branches" ReturnType="Collection(SCMSModel.Branch)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spBranchUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="BranchName" Mode="In" Type="String" />
+            <Parameter Name="SchoolId" Mode="In" Type="Int32" />
+            <Parameter Name="BranchLocation" Mode="In" Type="Int32" />
+            <Parameter Name="BranchAddress" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spEmployeeDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEmployeeInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserRole" Mode="In" Type="Int32" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdateBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spEmployeeSelectById" EntitySet="Employees" ReturnType="Collection(SCMSModel.Employee)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEmployeeUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserRole" Mode="In" Type="Int32" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdateBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLocationDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spLocationInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="Reference" Mode="In" Type="Int32" />
+            <Parameter Name="NameSpace" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Woreda" Mode="In" Type="String" />
+            <Parameter Name="Area" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+            <Parameter Name="Longtitude" Mode="In" Type="Decimal" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLocationSelectById" EntitySet="Locations" ReturnType="Collection(SCMSModel.Location)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spLocationUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="Reference" Mode="In" Type="Int32" />
+            <Parameter Name="NameSpace" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Woreda" Mode="In" Type="String" />
+            <Parameter Name="Area" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+            <Parameter Name="Longtitude" Mode="In" Type="Decimal" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLookupDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spLookupInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="LookupType" Mode="In" Type="String" />
+            <Parameter Name="LookupName" Mode="In" Type="String" />
+            <Parameter Name="LookupDescription" Mode="In" Type="String" />
+            <Parameter Name="IsDefault" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLookupSelectById" EntitySet="Lookups" ReturnType="Collection(SCMSModel.Lookup)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spLookupUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="LookupType" Mode="In" Type="String" />
+            <Parameter Name="LookupName" Mode="In" Type="String" />
+            <Parameter Name="LookupDescription" Mode="In" Type="String" />
+            <Parameter Name="IsDefault" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="DisplayName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Tax" Mode="In" Type="Int32" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PublicId" Mode="In" Type="String" />
+            <Parameter Name="VerificationStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="SubscriptionStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolSelectById" EntitySet="Schools" ReturnType="Collection(SCMSModel.School)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="DisplayName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Tax" Mode="In" Type="Int32" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PublicId" Mode="In" Type="String" />
+            <Parameter Name="VerificationStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="SubscriptionStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolYearDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolYearInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolYear" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolYearSelectById" EntitySet="SchoolYears" ReturnType="Collection(SCMSModel.SchoolYear)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSchoolYearUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolYear" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolYear" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentSelectById" EntitySet="Students" ReturnType="Collection(SCMSModel.Student)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SchoolYear" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUserDeleteById">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="Int32" />
+            <Parameter Name="Location" Mode="In" Type="Int32" />
+            <Parameter Name="FailedLoginCount" Mode="In" Type="Int32" />
+            <Parameter Name="IsEnabled" Mode="In" Type="Boolean" />
+            <Parameter Name="IsLocked" Mode="In" Type="Boolean" />
+            <Parameter Name="EmailVerified" Mode="In" Type="Boolean" />
+            <Parameter Name="PwdChangeRequired" Mode="In" Type="Boolean" />
+            <Parameter Name="LastLoginTime" Mode="In" Type="DateTime" />
+            <Parameter Name="LockedTime" Mode="In" Type="DateTime" />
+            <Parameter Name="PasswordChangeDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUserSelectById" EntitySet="Users" ReturnType="Collection(SCMSModel.User)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserUpdate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="Int32" />
+            <Parameter Name="Location" Mode="In" Type="Int32" />
+            <Parameter Name="FailedLoginCount" Mode="In" Type="Int32" />
+            <Parameter Name="IsEnabled" Mode="In" Type="Boolean" />
+            <Parameter Name="IsLocked" Mode="In" Type="Boolean" />
+            <Parameter Name="EmailVerified" Mode="In" Type="Boolean" />
+            <Parameter Name="PwdChangeRequired" Mode="In" Type="Boolean" />
+            <Parameter Name="LastLoginTime" Mode="In" Type="DateTime" />
+            <Parameter Name="LockedTime" Mode="In" Type="DateTime" />
+            <Parameter Name="PasswordChangeDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remark" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddressSelectAll" EntitySet="Addresses" ReturnType="Collection(SCMSModel.Address)" />
+          <FunctionImport Name="spBranchSelectAll" EntitySet="Branches" ReturnType="Collection(SCMSModel.Branch)" />
+          <FunctionImport Name="spEmployeeSelectAll" EntitySet="Employees" ReturnType="Collection(SCMSModel.Employee)" />
+          <FunctionImport Name="spLocationSelectAll" EntitySet="Locations" ReturnType="Collection(SCMSModel.Location)" />
+          <FunctionImport Name="spLookupSelectAll" EntitySet="Lookups" ReturnType="Collection(SCMSModel.Lookup)" />
+          <FunctionImport Name="spSchoolSelectAll" EntitySet="Schools" ReturnType="Collection(SCMSModel.School)" />
+          <FunctionImport Name="spSchoolYearSelectAll" EntitySet="SchoolYears" ReturnType="Collection(SCMSModel.SchoolYear)" />
+          <FunctionImport Name="spStudentSelectAll" EntitySet="Students" ReturnType="Collection(SCMSModel.Student)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserSelectAll" EntitySet="Users" ReturnType="Collection(SCMSModel.User)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCMSModelStoreContainer" CdmEntityContainer="SCMSEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="SCMSModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="AddressValue" ColumnName="AddressValue" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="SCMSModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+                <ScalarProperty Name="BranchLocation" ColumnName="BranchLocation" />
+                <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SCMSModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="SCMSModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Woreda" ColumnName="Woreda" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="SCMSModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+                <ScalarProperty Name="LookupType" ColumnName="LookupType" />
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+                <ScalarProperty Name="LookupDescription" ColumnName="LookupDescription" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="SCMSModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="VerificationStatus" ColumnName="VerificationStatus" />
+                <ScalarProperty Name="SubscriptionStatus" ColumnName="SubscriptionStatus" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchoolYears">
+            <EntityTypeMapping TypeName="SCMSModel.SchoolYear">
+              <MappingFragment StoreEntitySet="SchoolYear">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="SchoolYearID" ColumnName="SchoolYearID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="SchoolYear1" ColumnName="SchoolYear" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SCMSModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SchoolYear" ColumnName="SchoolYear" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SCMSModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="FailedLoginCount" ColumnName="FailedLoginCount" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="EmailVerified" ColumnName="EmailVerified" />
+                <ScalarProperty Name="PwdChangeRequired" ColumnName="PwdChangeRequired" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="LockedTime" ColumnName="LockedTime" />
+                <ScalarProperty Name="PasswordChangeDate" ColumnName="PasswordChangeDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAddressDeleteById" FunctionName="SCMSModel.Store.spAddressDeleteById" />
+          <FunctionImportMapping FunctionImportName="spAddressInsert" FunctionName="SCMSModel.Store.spAddressInsert" />
+          <FunctionImportMapping FunctionImportName="spAddressSelectById" FunctionName="SCMSModel.Store.spAddressSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAddressUpdate" FunctionName="SCMSModel.Store.spAddressUpdate" />
+          <FunctionImportMapping FunctionImportName="spBranchDeleteById" FunctionName="SCMSModel.Store.spBranchDeleteById" />
+          <FunctionImportMapping FunctionImportName="spBranchInsert" FunctionName="SCMSModel.Store.spBranchInsert" />
+          <FunctionImportMapping FunctionImportName="spBranchSelectById" FunctionName="SCMSModel.Store.spBranchSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBranchUpdate" FunctionName="SCMSModel.Store.spBranchUpdate" />
+          <FunctionImportMapping FunctionImportName="spEmployeeDeleteById" FunctionName="SCMSModel.Store.spEmployeeDeleteById" />
+          <FunctionImportMapping FunctionImportName="spEmployeeInsert" FunctionName="SCMSModel.Store.spEmployeeInsert" />
+          <FunctionImportMapping FunctionImportName="spEmployeeSelectById" FunctionName="SCMSModel.Store.spEmployeeSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEmployeeUpdate" FunctionName="SCMSModel.Store.spEmployeeUpdate" />
+          <FunctionImportMapping FunctionImportName="spLocationDeleteById" FunctionName="SCMSModel.Store.spLocationDeleteById" />
+          <FunctionImportMapping FunctionImportName="spLocationInsert" FunctionName="SCMSModel.Store.spLocationInsert" />
+          <FunctionImportMapping FunctionImportName="spLocationSelectById" FunctionName="SCMSModel.Store.spLocationSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLocationUpdate" FunctionName="SCMSModel.Store.spLocationUpdate" />
+          <FunctionImportMapping FunctionImportName="spLookupDeleteById" FunctionName="SCMSModel.Store.spLookupDeleteById" />
+          <FunctionImportMapping FunctionImportName="spLookupInsert" FunctionName="SCMSModel.Store.spLookupInsert" />
+          <FunctionImportMapping FunctionImportName="spLookupSelectById" FunctionName="SCMSModel.Store.spLookupSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLookupUpdate" FunctionName="SCMSModel.Store.spLookupUpdate" />
+          <FunctionImportMapping FunctionImportName="spSchoolDeleteById" FunctionName="SCMSModel.Store.spSchoolDeleteById" />
+          <FunctionImportMapping FunctionImportName="spSchoolInsert" FunctionName="SCMSModel.Store.spSchoolInsert" />
+          <FunctionImportMapping FunctionImportName="spSchoolSelectById" FunctionName="SCMSModel.Store.spSchoolSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSchoolUpdate" FunctionName="SCMSModel.Store.spSchoolUpdate" />
+          <FunctionImportMapping FunctionImportName="spSchoolYearDeleteById" FunctionName="SCMSModel.Store.spSchoolYearDeleteById" />
+          <FunctionImportMapping FunctionImportName="spSchoolYearInsert" FunctionName="SCMSModel.Store.spSchoolYearInsert" />
+          <FunctionImportMapping FunctionImportName="spSchoolYearSelectById" FunctionName="SCMSModel.Store.spSchoolYearSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSchoolYearUpdate" FunctionName="SCMSModel.Store.spSchoolYearUpdate" />
+          <FunctionImportMapping FunctionImportName="spStudentDeleteById" FunctionName="SCMSModel.Store.spStudentDeleteById" />
+          <FunctionImportMapping FunctionImportName="spStudentInsert" FunctionName="SCMSModel.Store.spStudentInsert" />
+          <FunctionImportMapping FunctionImportName="spStudentSelectById" FunctionName="SCMSModel.Store.spStudentSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentUpdate" FunctionName="SCMSModel.Store.spStudentUpdate" />
+          <FunctionImportMapping FunctionImportName="spUserDeleteById" FunctionName="SCMSModel.Store.spUserDeleteById" />
+          <FunctionImportMapping FunctionImportName="spUserInsert" FunctionName="SCMSModel.Store.spUserInsert" />
+          <FunctionImportMapping FunctionImportName="spUserSelectById" FunctionName="SCMSModel.Store.spUserSelectById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserUpdate" FunctionName="SCMSModel.Store.spUserUpdate" />
+          <FunctionImportMapping FunctionImportName="spAddressSelectAll" FunctionName="SCMSModel.Store.spAddressSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBranchSelectAll" FunctionName="SCMSModel.Store.spBranchSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEmployeeSelectAll" FunctionName="SCMSModel.Store.spEmployeeSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLocationSelectAll" FunctionName="SCMSModel.Store.spLocationSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLookupSelectAll" FunctionName="SCMSModel.Store.spLookupSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSchoolSelectAll" FunctionName="SCMSModel.Store.spSchoolSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSchoolYearSelectAll" FunctionName="SCMSModel.Store.spSchoolYearSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentSelectAll" FunctionName="SCMSModel.Store.spStudentSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserSelectAll" FunctionName="SCMSModel.Store.spUserSelectAll">
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
